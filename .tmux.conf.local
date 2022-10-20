@@ -37,6 +37,12 @@ tmux_conf_new_pane_reconnect_ssh=false
 #   - disabled (do not modify new-session bindings)
 tmux_conf_new_session_prompt=false
 
+# Keybindings for adjusting splitted pane size 
+bind -r h resize-pane -L 5
+bind -r j resize-pane -D 5
+bind -r k resize-pane -U 5
+bind -r l resize-pane -R 5
+
 # -- display -------------------------------------------------------------------
 # RGB 24-bit colour support (tmux >= 2.2), possible values are:
 #  - true
