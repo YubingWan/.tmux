@@ -98,8 +98,8 @@ tmux_conf_theme_focused_pane_bg="$one_dark_theme_colour_2"
 tmux_conf_theme_pane_border_style=thin
 
 # pane borders colours:
-tmux_conf_theme_pane_border="$one_dark_theme_colour_2"
-tmux_conf_theme_pane_active_border="$one_dark_theme_colour_4"
+tmux_conf_theme_pane_border="$one_dark_theme_colour_4"
+tmux_conf_theme_pane_active_border="$one_dark_theme_colour_2"
 
 # pane indicator colours (when you hit <prefix> + q)
 tmux_conf_theme_pane_indicator="$one_dark_theme_colour_5"
@@ -324,34 +324,45 @@ tmux_conf_theme_clock_style="24"
 # on Linux, this requires xsel or xclip
 tmux_conf_copy_to_os_clipboard=false
 
-
 # -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
+
+bind r source-file ~/.dotfiles/.tmux/.tmux.conf.local \;
 
 # increase history size
 #set -g history-limit 10000
 
 # start with mouse mode enabled
-#set -g mouse on
+set -g mouse on
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
 #set -g status-keys vi
-#set -g mode-keys vi
+set -g mode-keys vi
+
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
 
 # replace C-b by C-a instead of using both prefixes
 # set -gu prefix2
 # unbind C-a
+# # set -g prefix 'C-\'
+# bind 'C-\' send-prefix
 # unbind C-b
-# set -g prefix C-a
-# bind C-a send-prefix
 
 # if you don't want Oh my tmux! to alter a binding, use #!important
 # bind v new-window -c #{pane_current_path} #!important
 
 # move status line to top
 set -g status-position top
+set-option -g status off
 
+bind-key s { set-option status on }
+bind-key S { set-option status off }
+bind-key i { set-option status-position top }
+bind-key u { set-option status-position bottom }
 
 # -- tpm -----------------------------------------------------------------------
 
