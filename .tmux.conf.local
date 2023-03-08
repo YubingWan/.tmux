@@ -361,7 +361,7 @@ bind r source-file ~/.dotfiles/.tmux/.tmux.conf.local \;
 
 # move status line to top
 set -g status-position top
-set-option -g status off
+set-option -g status on
 
 bind-key s { set-option status on }
 bind-key S { set-option status off }
